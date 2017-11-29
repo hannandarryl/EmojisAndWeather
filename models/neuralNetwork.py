@@ -18,7 +18,7 @@ yTrain = Y[:split]
 yTest = Y[split:]
 
 input = Input(shape=(74,))
-dense = Dense(50, activation='relu')(input)
+dense = Dense(10, activation='relu')(input)
 output = Dense(1)(dense)
 
 model = Model(inputs=input, outputs=output)

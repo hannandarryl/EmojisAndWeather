@@ -15,7 +15,11 @@ def reclassifyAtmosphere(str):
     return 0
 
 for row in c.execute('select * from emojiWeather;'):
-    emojiVectors.append([int(value) for value in row[3:-3]])
+    emojiVector = [int(value) for value in row[3:-2]]
+    if sum(emojiVector) < 40:
+        continue
+
+    emojiVectors.append(emojiVector)
 
     atmosphere = reclassifyAtmosphere(row[-1])
     atmosphericConditions.append(atmosphere)
