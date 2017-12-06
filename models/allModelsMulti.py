@@ -9,6 +9,12 @@ import numpy as np
 from keras.utils import plot_model
 import graphviz
 
+def makeVector(yValue):
+    vector = [0,0,0,0,0,0,0,0]
+    vector[yValue] = 1
+
+    return vector
+
 # Load in data
 X = []
 with open('../data/emojis.pickle', 'rb') as file:
@@ -42,13 +48,13 @@ for loop in range(10):
     yTest = Y[split:]
 
     # Need to have y values in different format for neural networks
-    yTrainNN = [[1,0] if i == 1 else [0,1] for i in yTrain]
-    yTestNN = [[1,0] if i == 1 else [0,1] for i in yTest]
+    yTrainNN = [makeVector(i) for i in yTrain]
+    yTestNN = [makeVector(i) for i in yTest]
 
     # Define the structure of the neural network
     input = Input(shape=(75,))
     dense = Dense(20, activation='relu')(input)
-    output = Dense(2, activation='softmax')(dense)
+    output = Dense(8, activation='softmax')(dense)
 
     model = Model(inputs=input, outputs=output)
 
@@ -63,11 +69,22 @@ for loop in range(10):
     # Evaluate neural network
     neuralNetAcc.append(model.evaluate(xTest, yTestNN, verbose=0)[1])
 
+    # classTests = [[],[],[],[],[],[],[],[]]
+    #
+    # for i in range(len(xTest)):
+    #     classTests[yTest[i]].append(xTest[i])
+    #
+    # for i in range(len(classTests)):
+    #     print('On ' + str(i) + '.......')
+    #     if len(classTests[i]) < 1:
+    #         continue
+    #     print(model.evaluate(classTests[i], [makeVector(i) for test in classTests[i]], verbose=0)[1])
+
     # Build Gaussian Mixture Model
     print('Running GMM.........')
 
     # Fit GMM to the data
-    gmm = mixture.GaussianMixture(n_components=2, covariance_type='full').fit(xTrain)
+    gmm = mixture.GaussianMixture(n_components=8, covariance_type='full').fit(xTrain)
 
     # Evaluate the GMM
     gmmResults = gmm.predict(xTest)
@@ -127,12 +144,16 @@ for loop in range(10):
     print('Most common answer classifier........')
 
     # Find most common answer
-    numBad = len([1 for i in yTrain if i == 0])
-    numGood = len([1 for i in yTrain if i == 1])
+    counts = [0,0,0,0,0,0,0,0]
+    for num in yTrain:
+        counts[num] += 1
 
-    mostCommon = 1
-    if numBad > numGood:
-        mostCommon = 0
+    maxVal = 0
+    mostCommon = 0
+    for num in range(len(counts)):
+        if counts[num] > maxVal:
+            maxVal = counts[num]
+            mostCommon = num
 
     # Calculate NB accuracy
     totalCount = 0
@@ -145,11 +166,11 @@ for loop in range(10):
 
     mostCommonAcc.append(totalAccuracy)
 
-plot_model(model, to_file='model.jpg')
+# plot_model(model, to_file='model.jpg')
 
-dot_data = tree.export_graphviz(theTree, out_file=None)
-graph = graphviz.Source(dot_data)
-graph.render("tree.png")
+# dot_data = tree.export_graphviz(theTree, out_file=None)
+# graph = graphviz.Source(dot_data)
+# graph.render("tree.png")
 
 print('Neural Net Average Accuracy: ' + str(np.mean(neuralNetAcc)))
 print('Gaussian Mixture Average Accuracy: ' + str(np.mean(gmmAcc)))
@@ -163,8 +184,6 @@ plt.plot(decisionTreeAcc, label='Decision Tree')
 plt.plot(naiveBayesAcc, label='Naive Bayes')
 plt.plot(mostCommonAcc, label='Most Common')
 
-plt.legend(loc=3)
-
-plt.ylim((0.30, 0.75))
+#plt.legend(loc=3)
 
 plt.show()
