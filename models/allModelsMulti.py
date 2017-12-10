@@ -24,6 +24,8 @@ Y = []
 with open('../data/atmosphere.pickle', 'rb') as file:
     Y = pickle.load(file)
 
+print(len(X))
+
 neuralNetAcc = []
 gmmAcc = []
 decisionTreeAcc = []

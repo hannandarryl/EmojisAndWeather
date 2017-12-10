@@ -49,3 +49,4 @@ with open('../data/atmosphere.pickle', 'wb+') as file:
 
 print(emojiVectors[0])
 print(atmosphericConditions[0])
+print(len(emojiVectors))
