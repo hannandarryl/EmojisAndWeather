@@ -50,6 +50,19 @@ We access weather data for each location through the OpenWeatherMap API. We use 
 \subsection{Preprocessing}
 One issue that we encountered was that some of the emoji vectors were extremely sparse. In some cities, such as Nashville, almost every vector only had a few emojis. Therefore, we only include vectors in which the sum of its elements is greater than 40. For classification, each atmospheric condition is represented using a number from the range 0-7. In the case of binary classification, we consider clear to be a positive weather condition and represent it with a 0. We consider all other conditions to be negative and represent these using a 1. Our final data set consisted of 977 data pairs.
 
+\section{Learning Algorithms}
+We compare 5 learning algorithms on our classification tasks: ZeroR, a Gaussian Mixture Model (GMM), an Artificial Neural Network (ANN), a Decision Tree, and Naive Bayes. We use ZeroR to establish a baseline, and we use a GMM to evaluate how our data clusters. We implement all models, with the exception of the ANN, using Scikit-Learn\footnote{http://scikit-learn.org/stable/}.
+
+Our ANN is implemented using Keras\footnote{https://keras.io/}. The model architecture can be seen in Figure \ref{fig:neuralnet}. We use a ReLU activation function, binary crossentropy to evaluate our loss, and adam as our optimizer\cite{Nair2010}\cite{Kingma2015}. The model is trained for 20 epochs.
+
+\begin{figure}[h]
+\includegraphics[scale=0.7]{neuralnet}
+\includegraphics[scale=0.7]{neuralnetbinary}
+\centering
+\caption{Structure of our artificial neural networks. Left: ANN for standard classification. Right: ANN for binary classification. The numbers below the name of each layer represents the number of nodes in the layer.}
+\label{fig:neuralnet}
+\end{figure}
+
 \section{Results}\label{results}
 In this section we describe the results.
 

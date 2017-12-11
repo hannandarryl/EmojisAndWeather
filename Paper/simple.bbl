@@ -13,11 +13,21 @@ M.~C. Keller, B.~L. Fredrickson, O.~Ybarra, S.~Cote, K.~Johnson, J.~Mikels,
   Mood and Cognition}.
 \newblock {\em Psychological Science}, 16(9):724--731, sep 2005.
 
+\bibitem{Kingma2015}
+Diederik~P. Kingma and Jimmy Ba.
+\newblock {Adam: A Method for Stochastic Optimization}.
+\newblock {\em ICLR}, dec 2015.
+
 \bibitem{Melrose2015}
 Sherri Melrose.
 \newblock {Seasonal Affective Disorder: An Overview of Assessment and Treatment
   Approaches}.
 \newblock {\em Depression Research and Treatment}, 2015:1--6, nov 2015.
+
+\bibitem{Nair2010}
+Vinod Nair and Geoffrey~E Hinton.
+\newblock {Rectified Linear Units Improve Restricted Boltzmann Machines}.
+\newblock {\em Proc. 27th International Conference on Machine Learning}, 2010.
 
 \bibitem{Park2013}
 K~Park, S~Lee, E~Kim, M~Park, J~Park, and M~Cha.
