@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  11 DEC 2017 11:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.5.23)  11 DEC 2017 14:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -176,32 +176,82 @@ File: images/neuralnetbinary.png Graphic file (type png)
 <use images/neuralnetbinary.png>
 Package pdftex.def Info: images/neuralnetbinary.png used on input line 60.
 (pdftex.def)             Requested size: 129.98474pt x 170.7367pt.
- [4 <./images/neuralnet.png> <./images/neuralnetbinary.png>] [5] (./simple.bbl
+ [4 <./images/neuralnet.png> <./images/neuralnetbinary.png>] <images/binaryavg.
+png, id=29, 521.95pt x 106.3975pt>
+File: images/binaryavg.png Graphic file (type png)
+
+<use images/binaryavg.png>
+Package pdftex.def Info: images/binaryavg.png used on input line 72.
+(pdftex.def)             Requested size: 313.17241pt x 63.83897pt.
+
+<images/binarygraph.png, id=30, 415.5525pt x 320.19624pt>
+File: images/binarygraph.png Graphic file (type png)
+
+<use images/binarygraph.png>
+Package pdftex.def Info: images/binarygraph.png used on input line 73.
+(pdftex.def)             Requested size: 290.88477pt x 224.13583pt.
+
+<images/standardavg.png, id=31, 547.04375pt x 113.42375pt>
+File: images/standardavg.png Graphic file (type png)
+
+<use images/standardavg.png>
+Package pdftex.def Info: images/standardavg.png used on input line 83.
+(pdftex.def)             Requested size: 328.22878pt x 68.05476pt.
+
+<images/standardgraph.png, id=32, 612.2875pt x 311.1625pt>
+File: images/standardgraph.png Graphic file (type png)
+
+<use images/standardgraph.png>
+Package pdftex.def Info: images/standardgraph.png used on input line 84.
+(pdftex.def)             Requested size: 428.59833pt x 217.81226pt.
+
+Overfull \hbox (38.59833pt too wide) in paragraph at lines 83--86
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<images/ann.png, id=33, 196.735pt x 286.06876pt>
+File: images/ann.png Graphic file (type png)
+ <use images/ann.png>
+Package pdftex.def Info: images/ann.png used on input line 91.
+(pdftex.def)             Requested size: 118.04189pt x 171.64258pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[5] (./simple.bbl [6]
 Missing character: There is no â in font cmr12!
 Missing character: There is no € in font cmr12!
 Missing character: There is no “ in font cmr12!
-) [6] (./simple.aux) ) 
+) [7] [8 <./images/binaryavg.png> <./images/binarygraph.png>] [9 <./images/stan
+dardavg.png> <./images/standardgraph.png>] [10 <./images/ann.png>] (./simple.au
+x)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 1529 strings out of 492995
- 22188 string characters out of 6132704
- 82359 words of memory out of 5000000
- 5084 multiletter control sequences out of 15000+600000
- 9456 words of font info for 33 fonts, out of 8000000 for 9000
+ 1559 strings out of 492995
+ 22823 string characters out of 6132704
+ 84393 words of memory out of 5000000
+ 5109 multiletter control sequences out of 15000+600000
+ 9763 words of font info for 34 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,8n,25p,761b,215s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2017/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr10.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr12.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr17.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr7.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr8.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti
-12.pfb>
-Output written on simple.pdf (6 pages, 192473 bytes).
+ 39i,8n,25p,939b,215s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
+r/local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
+local/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/loc
+al/texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/
+texlive/2017/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
+Output written on simple.pdf (10 pages, 803174 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 39 compressed objects within 1 object stream
+ 86 PDF objects out of 1000 (max. 8388607)
+ 49 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 16 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

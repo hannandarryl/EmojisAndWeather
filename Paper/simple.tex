@@ -47,11 +47,11 @@ We collect tweets from 21 cities using Twitter's Streaming API via Tweepy\footno
 \subsection{Weather Data}
 We access weather data for each location through the OpenWeatherMap API. We use PyOWM\footnote{https://github.com/csparpa/pyowm}, an open-source python wrapper, to simplify API calls. Weather data is collected concurrently with Twitter data. At the end of each 2 hour interval, we collect the current atmospheric condition in each city. Examples of atmospheric conditions include rain, snow, clear, etc. In the data we collected, there are 8 classes of conditions: clouds, clear, rain, drizzle, mist, fog, snow, haze, and dust.
 
-\subsection{Preprocessing}
+\subsection{Preprocessing}\label{preprocessing}
 One issue that we encountered was that some of the emoji vectors were extremely sparse. In some cities, such as Nashville, almost every vector only had a few emojis. Therefore, we only include vectors in which the sum of its elements is greater than 40. For classification, each atmospheric condition is represented using a number from the range 0-7. In the case of binary classification, we consider clear to be a positive weather condition and represent it with a 0. We consider all other conditions to be negative and represent these using a 1. Our final data set consisted of 977 data pairs.
 
-\section{Learning Algorithms}
-We compare 5 learning algorithms on our classification tasks: ZeroR, a Gaussian Mixture Model (GMM), an Artificial Neural Network (ANN), a Decision Tree, and Naive Bayes. We use ZeroR to establish a baseline, and we use a GMM to evaluate how our data clusters. We implement all models, with the exception of the ANN, using Scikit-Learn\footnote{http://scikit-learn.org/stable/}.
+\section{Methods}
+We compare 5 learning algorithms on our classification tasks: ZeroR, a Gaussian Mixture Model (GMM), an Artificial Neural Network (ANN), a Decision Tree, and Naive Bayes. We use ZeroR to establish a baseline, and we use a GMM to evaluate how our data clusters. We implement all models, with the exception of the ANN, using Scikit-Learn\footnote{http://scikit-learn.org/stable/}. The models do not benefit significantly from modifying parameters. Results can be achieved by leaving them to their default values.
 
 Our ANN is implemented using Keras\footnote{https://keras.io/}. The model architecture can be seen in Figure \ref{fig:neuralnet}. We use a ReLU activation function, binary crossentropy to evaluate our loss, and adam as our optimizer\cite{Nair2010}\cite{Kingma2015}. The model is trained for 20 epochs.
 
@@ -59,17 +59,48 @@ Our ANN is implemented using Keras\footnote{https://keras.io/}. The model archit
 \includegraphics[scale=0.7]{neuralnet}
 \includegraphics[scale=0.7]{neuralnetbinary}
 \centering
-\caption{Structure of our artificial neural networks. Left: ANN for standard classification. Right: ANN for binary classification. The numbers below the name of each layer represents the number of nodes in the layer.}
+\caption{Structure of our artificial neural networks. \textbf{Left:} ANN for standard classification. \textbf{Right:} ANN for binary classification. The numbers below the name of each layer represents the number of nodes in the layer.}
 \label{fig:neuralnet}
 \end{figure}
 
 \section{Results}\label{results}
-In this section we describe the results.
+
+\subsection{Binary Classification}
+We first frame our problem as binary classification. We thought that a simpler form of classification may yield better results. A description of the 2 classes can be seen in section \ref{preprocessing}. The Gaussian Mixture Model performs the worst, at 51\%, indicating that the data does not cluster well. On average, ZeroR outperforms all of our other models, at 59\%. This indicates that the models are unable to learn a relationship between the emoji vectors and our 2 classes. Most likely, the limited success is due to the nature of the classes. Some atmospheric conditions that we label as negative might not belong in that class. For instance, snow may actually be a positive condition. See Figure \ref{fig:binary} for a detailed breakdown of the accuracies associated with each model.
+
+\begin{figure}[hb]
+\includegraphics[scale=0.6]{binaryavg}
+\includegraphics[scale=0.7]{binarygraph}
+\centering
+\caption{Binary classification results. \textbf{Top:} Average Accuracy for each model \textbf{Bottom:} Accuracy for each model over 10 trials.}
+\label{fig:binary}
+\end{figure}
+
+\subsection{Standard Classification}
+We next framed our problem as a classification task with 8 classes. A description of the classes can be seen in section \ref{preprocessing}. Here, Naive Bayes performs the worse, at 19\% accuracy. This is most likely due to the lack of statistical independence among emojis. Most notably, multiple emojis can come from the same tweet; such emojis are certainly not independent. The ANN significantly outperforms the other models, averaging 88\% accuracy. These results indicate that there does exist a relationship between emoji vectors and their atmospheric class. However, the relationship is too complex for models other than the ANN. Figure \ref{fig:standard} provides a detailed breakdown of the accuracy of each model. Figure \ref{fig:ann} provides the accuracy of the ANN on each of our 8 classes. The model does not just learn a few classes well, but achieves reasonable accuracy on all common classes.
+
+\begin{figure}[h]
+\includegraphics[scale=0.6]{standardavg}
+\includegraphics[scale=0.7]{standardgraph}
+\centering
+\caption{Standard classification results. \textbf{Top:} Average Accuracy for each model \textbf{Bottom:} Accuracy for each model over 10 trials.}
+\label{fig:standard}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.6]{ann}
+\centering
+\caption{Accuracy of the artificial neural network for each of our 8 classes. Each classes integer value is printed, along with the percentage immediately below it.}
+\label{fig:ann}
+\end{figure}
 
 \section{Conclusions}\label{conclusions}
-Conclusion goes here.
+Our results support the relationship between weather and emotion. Based upon the distribution of emojis used in a given city, our ANN was able to predict the atmospheric condition of that city with 88\% accuracy. Although our hypothesis was supported, we cannot draw specific conclusions regarding the relationship. To do this, further analysis is needed.
 
-\newpage
+Most of the challenges that we encountered were related to the Twitter API. Initially, we believed that we could use prior tweets to generate our data. However, we learned that the Twitter API only allows you to collect tweets from the previous week. Furthermore, there is a cap on the number of tweets you can collect of 1500. We resolved this problem by collecting tweets in real time using the Twitter Streaming API. The consequences of collecting data this way was that we had to wait a couple weeks before we had any data to work with. Given the restricted time frame for the project, this limited the time that we could spend developing and evaluating our models.
+
+Future work would involve determining which emojis have the strongest correlation with each weather condition. From this information, we could directly infer which emotions are elicited from each weather condition. We would also benefit from having a larger dataset. We could expand our scripts to gather tweets from all around the world with relative ease. This would also open up the possibility of analyzing the effect across cultures.
+
 \bibliographystyle{plain}
 \bibliography{emoji}
 
