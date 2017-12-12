@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: simple.aux
+The style file: plain.bst
+Database file #1: emoji.bib
+Warning--empty journal in Baylis2017
+You've used 7 entries,
+            2118 wiz_defined-function locations,
+            545 strings with 5286 characters,
+and the built_in function-call counts, 2548 in all, are:
+= -- 242
+> -- 159
+< -- 1
++ -- 63
+- -- 56
+* -- 196
+:= -- 449
+add.period$ -- 21
+call.type$ -- 7
+change.case$ -- 49
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 83
+empty$ -- 159
+format.name$ -- 56
+if$ -- 501
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 7
+newline$ -- 38
+num.names$ -- 14
+pop$ -- 45
+preamble$ -- 1
+purify$ -- 42
+quote$ -- 0
+skip$ -- 63
+stack$ -- 0
+substring$ -- 130
+swap$ -- 15
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 28
+warning$ -- 1
+while$ -- 23
+width$ -- 8
+write$ -- 75
+(There was 1 warning)
